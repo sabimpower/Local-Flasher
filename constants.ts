@@ -9,7 +9,7 @@ export const RECIPIENT_WALLET = "0xc1f49fb2b4f4cd3fad0aa1ec181e5e4549a13d6f";
 export const PACKAGES: Package[] = [
   {
     id: 'trial',
-    priceUsd: 3.99,
+    priceUsd: 4,
     flashAmount: 300,
     limitedTime: false,
   },
