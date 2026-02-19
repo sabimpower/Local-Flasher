@@ -9,29 +9,29 @@ export const RECIPIENT_WALLET = "0xc1f49fb2b4f4cd3fad0aa1ec181e5e4549a13d6f";
 export const PACKAGES: Package[] = [
   {
     id: 'trial',
-    priceUsd: 4,
-    flashAmount: 300,
+    priceUsd: 8,
+    flashAmount: 700,
     limitedTime: false,
   },
   {
     id: 'starter',
-    priceUsd: 11,
-    flashAmount: 900,
+    priceUsd: 19,
+    flashAmount: 2000,
   },
   {
     id: 'pro',
-    priceUsd: 25,
-    flashAmount: 2500,
+    priceUsd: 30,
+    flashAmount: 3200,
     popular: true,
   },
   {
     id: 'business',
     priceUsd: 50,
-    flashAmount: 6000,
+    flashAmount: 6800,
   },
   {
     id: 'enterprise',
-    priceUsd: 100,
-    flashAmount: 13000,
+    priceUsd: 110,
+    flashAmount: 14000,
   },
 ];
