@@ -10,24 +10,17 @@ export const Footer: React.FC = () => {
             <div className="col-span-1 md:col-span-2">
                 <h3 className="text-white font-bold text-lg mb-4">Local Flasher</h3>
                 <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-6">
-                    The premier decentralized protocol for instant Flash USDT liquidity on the Solana network. Secure, automated, and anonymous.
+                    The premier decentralized protocol for instant Flash USDT liquidity on the BNB network. Secure, automated, and anonymous.
                 </p>
             </div>
             
             <div>
-                <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Protocol</h4>
-                <ul className="space-y-2 text-sm text-gray-500">
-                    <li><a href="#" className="hover:text-primary transition-colors">Network Status</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">Governance</a></li>
-                    <li><a href="#" className="hover:text-primary transition-colors">Security Audit</a></li>
-                </ul>
+                {/* Protocol links removed as requested */}
             </div>
 
             <div>
                 <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Support</h4>
                 <ul className="space-y-2 text-sm text-gray-500">
-                    <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
                     <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
                     <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
                 </ul>

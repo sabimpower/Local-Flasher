@@ -104,7 +104,7 @@ export const Payment: React.FC = () => {
                     {/* Placeholder for Payment Icons if needed */}
                     <div className="flex items-center gap-2 text-xs text-gray-400">
                         <CreditCard size={14} />
-                        <span>Crypto & Cards Accepted</span>
+                        <span>Crypto Accepted</span>
                     </div>
                 </div>
             </div>

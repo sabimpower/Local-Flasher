@@ -118,7 +118,13 @@ export const OrderDetails: React.FC = () => {
                         <input 
                             type="text" 
                             value={telegram}
-                            onChange={(e) => setTelegram(e.target.value)}
+                            onChange={(e) => {
+                                let val = e.target.value;
+                                if (val && !val.startsWith('@')) {
+                                    val = '@' + val;
+                                }
+                                setTelegram(val);
+                            }}
                             className="w-full bg-black/20 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 font-mono text-sm"
                             placeholder="@username"
                         />
