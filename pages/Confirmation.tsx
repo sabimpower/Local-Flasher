@@ -12,14 +12,13 @@ export const Confirmation: React.FC = () => {
   // Generate a random Order ID for display
   const orderId = React.useMemo(() => Math.random().toString(36).substr(2, 9).toUpperCase(), []);
 
-  if (!order.selectedPackage) {
-      // If state is lost (e.g. after redirect), we might want to show a generic message or redirect home.
-      // For this demo flow where we assume we might land here, let's just redirect if no package.
-      // But if the user wants to see this page, they likely need to be in the flow.
-      // Since we redirect to BoomFi, this page might not be reachable in the same session easily.
-      // However, I will keep the check.
-      return null; 
-  }
+  // Fallback data if state is lost (e.g. after redirect)
+  const displayPackage = order.selectedPackage || {
+    flashAmount: 0,
+    priceUsd: 0
+  };
+
+  const isStateMissing = !order.selectedPackage;
 
   return (
     <div className="min-h-screen bg-dark pt-20 px-4 relative overflow-hidden flex items-center justify-center">
@@ -40,7 +39,9 @@ export const Confirmation: React.FC = () => {
         <h1 className="text-4xl font-black text-white mb-4 tracking-tight">Order Initiated!</h1>
         <p className="text-gray-400 mb-8 font-medium">
             Your payment is being processed. <br/>
-            <span className="text-secondary font-bold text-lg">{order.selectedPackage.flashAmount.toLocaleString()} Flash</span>
+            {!isStateMissing && (
+                <span className="text-secondary font-bold text-lg">{displayPackage.flashAmount.toLocaleString()} Flash</span>
+            )}
         </p>
 
         <div className="glass-card rounded-3xl p-8 mb-8 text-left ring-1 ring-white/10 shadow-2xl relative overflow-hidden">
@@ -60,14 +61,18 @@ export const Confirmation: React.FC = () => {
                     <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Order ID</span>
                     <span className="text-white text-sm font-mono font-medium">#{orderId}</span>
                 </div>
-                 <div className="flex justify-between items-center">
-                    <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Package</span>
-                    <span className="text-white text-sm font-bold">{order.selectedPackage.flashAmount.toLocaleString()} Flash</span>
-                </div>
-                 <div className="flex justify-between items-center">
-                    <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Price</span>
-                    <span className="text-white text-sm font-bold">${order.selectedPackage.priceUsd} USD</span>
-                </div>
+                {!isStateMissing && (
+                    <>
+                        <div className="flex justify-between items-center">
+                            <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Package</span>
+                            <span className="text-white text-sm font-bold">{displayPackage.flashAmount.toLocaleString()} Flash</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Price</span>
+                            <span className="text-white text-sm font-bold">${displayPackage.priceUsd} USD</span>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
 
