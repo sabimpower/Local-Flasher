@@ -29,10 +29,6 @@ export const Navbar: React.FC = () => {
             <Link to="/" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               Packages
             </Link>
-            <div className="h-4 w-px bg-white/10"></div>
-            <a href="#support" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              Help Center
-            </a>
           </div>
         </div>
       </div>
