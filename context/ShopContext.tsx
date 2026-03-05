@@ -5,6 +5,7 @@ const defaultOrder: OrderState = {
   selectedPackage: null,
   walletAddress: '',
   email: '',
+  telegram: '',
   txHash: '',
 };
 

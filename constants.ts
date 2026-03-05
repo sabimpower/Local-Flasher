@@ -8,30 +8,34 @@ export const RECIPIENT_WALLET = "0xc1f49fb2b4f4cd3fad0aa1ec181e5e4549a13d6f";
 
 export const PACKAGES: Package[] = [
   {
-    id: 'trial',
-    priceUsd: 8,
-    flashAmount: 700,
-    limitedTime: false,
+    id: 'offer',
+    priceUsd: 2.5,
+    flashAmount: 180,
+    popular: true, // Mark as the offer
+    paymentLink: "https://pay.boomfi.xyz/3AWkTNcdcZKKVk8FmqBhvTtvLBh",
   },
   {
     id: 'starter',
-    priceUsd: 19,
-    flashAmount: 2000,
+    priceUsd: 11,
+    flashAmount: 900,
+    paymentLink: "https://pay.boomfi.xyz/3AWkZwp0PBQUraz9RXKOyXrcQtX",
   },
   {
     id: 'pro',
-    priceUsd: 30,
-    flashAmount: 3200,
-    popular: true,
+    priceUsd: 25,
+    flashAmount: 2500,
+    paymentLink: "https://pay.boomfi.xyz/3AWkBJrcyoQycNDqhLc7ObQFGOz",
   },
   {
     id: 'business',
     priceUsd: 50,
-    flashAmount: 6800,
+    flashAmount: 6000,
+    paymentLink: "https://pay.boomfi.xyz/3AWkgvTa6qLinUrBNPU7JDmI3Ph",
   },
   {
     id: 'enterprise',
-    priceUsd: 110,
-    flashAmount: 14000,
+    priceUsd: 100,
+    flashAmount: 13000,
+    paymentLink: "https://pay.boomfi.xyz/3AWkmAZ4kb9vOfJSWsk3hVj8hbA",
   },
 ];

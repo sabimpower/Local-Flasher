@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShop } from '../context/ShopContext';
 import { SEO } from '../components/SEO';
@@ -9,13 +9,17 @@ export const Confirmation: React.FC = () => {
   const { order } = useShop();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!order.txHash) {
-        navigate('/');
-    }
-  }, [order.txHash, navigate]);
+  // Generate a random Order ID for display
+  const orderId = React.useMemo(() => Math.random().toString(36).substr(2, 9).toUpperCase(), []);
 
-  if (!order.selectedPackage) return null;
+  if (!order.selectedPackage) {
+      // If state is lost (e.g. after redirect), we might want to show a generic message or redirect home.
+      // For this demo flow where we assume we might land here, let's just redirect if no package.
+      // But if the user wants to see this page, they likely need to be in the flow.
+      // Since we redirect to BoomFi, this page might not be reachable in the same session easily.
+      // However, I will keep the check.
+      return null; 
+  }
 
   return (
     <div className="min-h-screen bg-dark pt-20 px-4 relative overflow-hidden flex items-center justify-center">
@@ -33,10 +37,10 @@ export const Confirmation: React.FC = () => {
             <div className="absolute inset-0 rounded-full border border-secondary/20 animate-ping opacity-20"></div>
         </div>
         
-        <h1 className="text-4xl font-black text-white mb-4 tracking-tight">Order Confirmed!</h1>
+        <h1 className="text-4xl font-black text-white mb-4 tracking-tight">Order Initiated!</h1>
         <p className="text-gray-400 mb-8 font-medium">
-            Transaction Verified. <br/>
-            Initializing injection of <span className="text-secondary font-bold text-lg">{order.selectedPackage.flashAmount} Flash</span>.
+            Your payment is being processed. <br/>
+            <span className="text-secondary font-bold text-lg">{order.selectedPackage.flashAmount.toLocaleString()} Flash</span>
         </p>
 
         <div className="glass-card rounded-3xl p-8 mb-8 text-left ring-1 ring-white/10 shadow-2xl relative overflow-hidden">
@@ -49,23 +53,27 @@ export const Confirmation: React.FC = () => {
                     <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Status</span>
                     <span className="flex items-center gap-2 text-secondary text-sm font-bold bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
                         <div className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></div>
-                        Processing
+                        Pending Payment
                     </span>
                 </div>
                 <div className="flex justify-between items-center">
                     <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Order ID</span>
-                    <span className="text-white text-sm font-mono font-medium">#{Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
+                    <span className="text-white text-sm font-mono font-medium">#{orderId}</span>
                 </div>
-                <div className="flex justify-between items-start">
-                    <span className="text-gray-500 text-xs font-bold uppercase tracking-wider mt-1">Recipient</span>
-                    <span className="text-gray-300 text-xs font-mono break-all max-w-[180px] text-right bg-black/20 p-2 rounded-lg">{order.walletAddress}</span>
+                 <div className="flex justify-between items-center">
+                    <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Package</span>
+                    <span className="text-white text-sm font-bold">{order.selectedPackage.flashAmount.toLocaleString()} Flash</span>
+                </div>
+                 <div className="flex justify-between items-center">
+                    <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Price</span>
+                    <span className="text-white text-sm font-bold">${order.selectedPackage.priceUsd} USD</span>
                 </div>
             </div>
         </div>
 
         <p className="text-gray-500 text-xs mb-8 leading-relaxed">
-            Delivery is automated and typically completes within 15 minutes. <br/>
-            You can verify the transaction on the blockchain shortly.
+            Please complete your payment on the BoomFi page. <br/>
+            Once confirmed, your flash will be delivered automatically.
         </p>
 
         <a 

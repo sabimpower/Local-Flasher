@@ -6,12 +6,14 @@ export interface Package {
   limitedTime?: boolean;
   durationHours?: number;
   durationMinutes?: number;
+  paymentLink?: string;
 }
 
 export interface OrderState {
   selectedPackage: Package | null;
   walletAddress: string;
   email: string;
+  telegram: string;
   txHash: string;
 }
 

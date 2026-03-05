@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShop } from '../context/ShopContext';
 import { SEO } from '../components/SEO';
-import { ArrowLeft, Wallet, Mail, Shield } from 'lucide-react';
+import { ArrowLeft, Wallet, Mail, Shield, Send } from 'lucide-react';
 
 export const OrderDetails: React.FC = () => {
   const { order, updateOrder } = useShop();
   const navigate = useNavigate();
   const [wallet, setWallet] = useState(order.walletAddress);
   const [email, setEmail] = useState(order.email);
+  const [telegram, setTelegram] = useState(order.telegram);
   const [error, setError] = useState('');
 
   if (!order.selectedPackage) {
@@ -21,7 +22,7 @@ export const OrderDetails: React.FC = () => {
     setError('');
 
     // BEP20 / EVM address validation (starts with 0x, 42 chars)
-    if (!wallet || wallet.length < 40 || !wallet.startsWith('0x')) {
+    if (!wallet || wallet.length !== 42 || !wallet.startsWith('0x')) {
       setError('Please enter a valid BNB Smart Chain (BEP20) wallet address.');
       return;
     }
@@ -29,8 +30,12 @@ export const OrderDetails: React.FC = () => {
       setError('Please enter a valid email address.');
       return;
     }
+    if (!telegram || telegram.length < 3) {
+      setError('Please enter a valid Telegram handle.');
+      return;
+    }
 
-    updateOrder({ walletAddress: wallet, email });
+    updateOrder({ walletAddress: wallet, email, telegram });
     navigate('/payment');
   };
 
@@ -74,7 +79,7 @@ export const OrderDetails: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">
-                        Recipient Wallet (BEP20)
+                        BNB Wallet Address
                     </label>
                     <div className="relative group">
                         <Wallet className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-primary transition-colors" size={20} />
@@ -83,7 +88,7 @@ export const OrderDetails: React.FC = () => {
                             value={wallet}
                             onChange={(e) => setWallet(e.target.value)}
                             className="w-full bg-black/20 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 font-mono text-sm"
-                            placeholder="Enter 0x... address"
+                            placeholder="0x..."
                         />
                     </div>
                 </div>
@@ -102,7 +107,22 @@ export const OrderDetails: React.FC = () => {
                             placeholder="your@email.com"
                         />
                     </div>
-                    <p className="text-[10px] text-gray-600 mt-2 font-medium">Used for order confirmation and support.</p>
+                </div>
+
+                <div>
+                    <label className="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wide">
+                        Telegram Handle
+                    </label>
+                    <div className="relative group">
+                        <Send className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-primary transition-colors" size={20} />
+                        <input 
+                            type="text" 
+                            value={telegram}
+                            onChange={(e) => setTelegram(e.target.value)}
+                            className="w-full bg-black/20 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all placeholder-gray-600 font-mono text-sm"
+                            placeholder="@username"
+                        />
+                    </div>
                 </div>
 
                 {error && (
