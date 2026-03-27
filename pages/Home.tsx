@@ -187,7 +187,7 @@ export const Home: React.FC = () => {
                         
                         <video 
                             ref={videoRef}
-                            src="https://local-flasher.vercel.app/VN20260118_235231.mp4" 
+                            src="https://local-flasher.vercel.app/VN20260327_224208.mp4" 
                             autoPlay 
                             loop 
                             muted 
