@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 import { PackageCard } from '../components/PackageCard';
 import { PACKAGES, APP_NAME } from '../constants';
 import { Package } from '../types';
@@ -30,9 +32,18 @@ const NetworkStatus = () => {
 };
 
 export const Home: React.FC = () => {
+  const { width, height } = useWindowSize();
+  const [showConfetti, setShowConfetti] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [visiblePackages, setVisiblePackages] = useState<Package[]>([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowConfetti(false);
+    }, 7000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -90,6 +101,16 @@ export const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-dark">
+      {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          numberOfPieces={500}
+          gravity={0.15}
+          style={{ position: 'fixed', top: 0, left: 0, zIndex: 9999, pointerEvents: 'none' }}
+        />
+      )}
       <SEO title="Automated Liquidity" description={`${APP_NAME} - Professional automated liquidity injection directly to your BNB wallet. Verified, anonymous, and secure.`} />
       
       {/* Premium Hero Section */}
