@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
 import { PackageCard } from '../components/PackageCard';
-import { PACKAGES, APP_NAME, SUPPORT_WHATSAPP, SUPPORT_TELEGRAM } from '../constants';
+import { PACKAGES, APP_NAME, SUPPORT_TELEGRAM } from '../constants';
 import { Package } from '../types';
 import { SEO } from '../components/SEO';
 import { ShieldCheck, Zap, Globe, Clock, Wallet, CheckCircle2, ArrowRight, ShieldAlert, Phone, Send } from 'lucide-react';

@@ -1,27 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOGO_URL, APP_NAME, SUPPORT_WHATSAPP, SUPPORT_TELEGRAM } from '../constants';
-import { Phone, Send } from 'lucide-react';
+import { LOGO_URL, APP_NAME, SUPPORT_TELEGRAM } from '../constants';
+import { Send } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
-  const waLink = `https://wa.me/${SUPPORT_WHATSAPP.replace(/\s+/g, '').replace('+', '')}`;
   const tgLink = `https://t.me/${SUPPORT_TELEGRAM.replace('@', '')}`;
 
   return (
     <>
-      <a 
-        href={waLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block w-full bg-primary py-2 px-4 text-center overflow-hidden relative hover:bg-yellow-400 transition-colors group"
-      >
-        <div className="flex items-center justify-center gap-3 animate-pulse group-hover:animate-none">
-          <Phone size={14} className="text-dark" />
-          <span className="text-[11px] font-black uppercase tracking-widest text-dark">
-            Support is now available on WhatsApp: {SUPPORT_WHATSAPP}
-          </span>
-        </div>
-      </a>
       <nav className="w-full bg-dark/90 backdrop-blur-xl border-b border-white/5 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -45,15 +31,6 @@ export const Navbar: React.FC = () => {
           
           <div className="flex items-center gap-4 sm:gap-6">
             <div className="flex flex-col items-end gap-1">
-              <a 
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[10px] font-bold text-gray-400 hover:text-[#25D366] transition-colors uppercase tracking-wider"
-              >
-                <Phone size={12} />
-                <span>WhatsApp</span>
-              </a>
               <a 
                 href={tgLink}
                 target="_blank"
