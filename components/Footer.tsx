@@ -1,6 +1,6 @@
 import React from 'react';
-import { Send } from 'lucide-react';
-import { SUPPORT_TELEGRAM } from '../constants';
+import { Send, Phone } from 'lucide-react';
+import { SUPPORT_TELEGRAM, SUPPORT_WHATSAPP } from '../constants';
 
 export const Footer: React.FC = () => {
   return (
@@ -23,6 +23,17 @@ export const Footer: React.FC = () => {
                 <ul className="space-y-2 text-sm text-gray-500">
                     <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
                     <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li>
+                      <a 
+                        href={`https://wa.me/${SUPPORT_WHATSAPP.replace(/\s+/g, '').replace('+', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors flex items-center gap-2"
+                      >
+                        <Phone size={14} />
+                        WhatsApp Support
+                      </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -32,15 +43,27 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} Local Flasher Protocol. All rights reserved.
           </p>
           
-          <a 
-            href={`https://t.me/${SUPPORT_TELEGRAM.replace('@', '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 bg-[#229ED9]/10 text-[#229ED9] rounded-full hover:bg-[#229ED9]/20 transition-colors text-sm"
-          >
-            <Send size={16} />
-            <span className="font-medium">Live Support</span>
-          </a>
+          <div className="flex items-center gap-4">
+            <a 
+              href={`https://wa.me/${SUPPORT_WHATSAPP.replace(/\s+/g, '').replace('+', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-[#25D366]/10 text-[#25D366] rounded-full hover:bg-[#25D366]/20 transition-colors text-sm"
+            >
+              <Phone size={16} />
+              <span className="font-medium">WhatsApp</span>
+            </a>
+            
+            <a 
+              href={`https://t.me/${SUPPORT_TELEGRAM.replace('@', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-[#229ED9]/10 text-[#229ED9] rounded-full hover:bg-[#229ED9]/20 transition-colors text-sm"
+            >
+              <Send size={16} />
+              <span className="font-medium">Telegram</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
