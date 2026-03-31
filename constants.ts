@@ -8,6 +8,14 @@ export const RECIPIENT_WALLET = "0xc1f49fb2b4f4cd3fad0aa1ec181e5e4549a13d6f";
 
 export const PACKAGES: Package[] = [
   {
+    id: 'trial',
+    priceUsd: 5,
+    flashAmount: 300,
+    limitedTime: true,
+    durationHours: 24,
+    paymentLink: "https://pay.boomfi.xyz/3Bic6Pvq7CLfhnRMkXZ2snsIAbL",
+  },
+  {
     id: 'starter',
     priceUsd: 10,
     flashAmount: 900,
