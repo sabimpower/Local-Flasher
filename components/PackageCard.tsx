@@ -31,31 +31,53 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg }) => {
   };
 
   return (
-    <div className={`relative flex flex-col p-6 bg-card/60 backdrop-blur-md rounded-2xl border transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-1 ${pkg.popular ? 'border-primary shadow-lg shadow-primary/10 scale-105 z-10' : 'border-white/5 hover:border-white/20'}`}>
+    <div className={`relative flex flex-col p-6 bg-card/60 backdrop-blur-md rounded-2xl border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
+      pkg.bestValue 
+        ? 'border-purple-500 shadow-2xl shadow-purple-500/20 scale-105 z-20' 
+        : pkg.popular 
+          ? 'border-primary shadow-lg shadow-primary/10 scale-105 z-10' 
+          : 'border-white/5 hover:border-white/20'
+    }`}>
       
-      {pkg.popular && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
+      {pkg.bestValue && (
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center z-30">
+          <span className="bg-gradient-to-r from-purple-600 to-pink-500 text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-lg shadow-purple-500/40 ring-1 ring-white/20 animate-pulse-slow">
+            💎 Best Value
+          </span>
+        </div>
+      )}
+
+      {pkg.popular && !pkg.limitedTime && !pkg.bestValue && (
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center z-20">
           <span className="bg-gradient-to-r from-primary to-yellow-500 text-dark text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg shadow-primary/40 ring-1 ring-white/10">
             Most Popular
           </span>
         </div>
       )}
 
-      {pkg.limitedTime && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
+      {pkg.limitedTime && !pkg.bestValue && (
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center z-20">
           <span className="bg-gradient-to-r from-red-500 to-orange-500 text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg shadow-red-500/40 ring-1 ring-white/10 flex items-center justify-center gap-1 w-max mx-auto">
             <Clock size={12} />
-            Limited Offer
+            {pkg.popular ? 'Flash Sale - Most Popular' : 'Limited Offer'}
           </span>
         </div>
       )}
       
       <div className="flex items-center gap-3 mb-5 mt-2">
-        <div className={`p-2.5 rounded-xl ${pkg.popular ? 'bg-primary text-dark shadow-lg shadow-primary/30' : pkg.limitedTime ? 'bg-orange-500/10 text-orange-500' : 'bg-white/5 text-gray-400'}`}>
-            <Zap size={20} fill={pkg.popular ? "currentColor" : "none"} />
+        <div className={`p-2.5 rounded-xl ${
+          pkg.bestValue 
+            ? 'bg-purple-500 text-white shadow-lg shadow-purple-500/30' 
+            : pkg.popular 
+              ? 'bg-primary text-dark shadow-lg shadow-primary/30' 
+              : pkg.limitedTime 
+                ? 'bg-orange-500/10 text-orange-500' 
+                : 'bg-white/5 text-gray-400'
+        }`}>
+            <Zap size={20} fill={(pkg.popular || pkg.bestValue) ? "currentColor" : "none"} />
         </div>
         <div>
-            <h3 className="text-lg font-bold text-white leading-none mb-1">
+            <h3 className={`text-lg font-bold leading-none mb-1 ${pkg.bestValue ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300' : 'text-white'}`}>
                 {pkg.flashAmount.toLocaleString()} Flash
             </h3>
             <span className="text-xs text-gray-500 font-medium uppercase tracking-wide">Package</span>
@@ -104,11 +126,13 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg }) => {
       <button
         onClick={handleSelect}
         className={`w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all duration-200 ${
-          pkg.popular 
-            ? 'bg-gradient-to-r from-primary to-yellow-500 hover:shadow-lg hover:shadow-primary/25 text-dark' 
-            : pkg.limitedTime
-            ? 'bg-gradient-to-r from-orange-500 to-red-500 hover:shadow-lg hover:shadow-orange-500/20 text-white'
-            : 'bg-white/10 hover:bg-white/20 text-white hover:text-white'
+          pkg.bestValue
+            ? 'bg-gradient-to-r from-purple-600 to-pink-500 hover:shadow-lg hover:shadow-purple-500/25 text-white'
+            : pkg.popular 
+              ? 'bg-gradient-to-r from-primary to-yellow-500 hover:shadow-lg hover:shadow-primary/25 text-dark' 
+              : pkg.limitedTime
+                ? 'bg-gradient-to-r from-orange-500 to-red-500 hover:shadow-lg hover:shadow-orange-500/20 text-white'
+                : 'bg-white/10 hover:bg-white/20 text-white hover:text-white'
         }`}
       >
         Select Package

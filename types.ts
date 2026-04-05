@@ -3,6 +3,7 @@ export interface Package {
   priceUsd: number;
   flashAmount: number;
   popular?: boolean;
+  bestValue?: boolean;
   limitedTime?: boolean;
   durationHours?: number;
   durationMinutes?: number;
