@@ -56,8 +56,8 @@ export const Home: React.FC = () => {
   useEffect(() => {
     const checkPackages = () => {
         const now = Date.now();
-        // Updated key to reset timer for the new $65 package launch
-        const STORAGE_KEY = 'flash_promo_timer_v5'; 
+        // Updated key to reset timer for the new packages
+        const STORAGE_KEY = 'flash_promo_timer_v6'; 
         let startTime = parseInt(localStorage.getItem(STORAGE_KEY) || '0');
 
         // Initialize timer if not set

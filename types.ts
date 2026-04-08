@@ -1,5 +1,6 @@
 export interface Package {
   id: string;
+  name?: string;
   priceUsd: number;
   flashAmount: number;
   popular?: boolean;

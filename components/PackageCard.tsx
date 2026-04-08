@@ -80,7 +80,7 @@ export const PackageCard: React.FC<PackageCardProps> = ({ pkg }) => {
             <h3 className={`text-lg font-bold leading-none mb-1 ${pkg.bestValue ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300' : 'text-white'}`}>
                 {pkg.flashAmount.toLocaleString()} Flash
             </h3>
-            <span className="text-xs text-gray-500 font-medium uppercase tracking-wide">Package</span>
+            <span className="text-xs text-gray-500 font-medium uppercase tracking-wide">{pkg.name || 'Package'}</span>
         </div>
       </div>
 
