@@ -37,13 +37,11 @@ export const Navbar: React.FC = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[10px] font-bold text-gray-400 hover:text-[#229ED9] transition-colors uppercase tracking-wider"
               >
-                <svg 
-                  viewBox="0 0 24 24" 
-                  className="w-3 h-3 fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.88.03-.24.36-.48.99-.74 3.88-1.69 6.46-2.8 7.74-3.35 3.68-1.56 4.44-1.83 4.94-1.84.11 0 .35.03.5.16.13.1.17.24.19.34.02.07.03.22.02.33z"/>
-                </svg>
+                <img 
+                  src="https://static.vecteezy.com/system/resources/previews/023/986/562/non_2x/telegram-logo-telegram-logo-transparent-telegram-icon-transparent-free-free-png.png" 
+                  alt="Telegram"
+                  className="w-3 h-3 object-contain"
+                />
                 <span>Telegram</span>
               </a>
             </div>

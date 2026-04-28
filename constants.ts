@@ -15,6 +15,13 @@ export const PACKAGES: Package[] = [
     paymentLink: "https://pay.boomfi.xyz/3Bic6Pvq7CLfhnRMkXZ2snsIAbL",
   },
   {
+    id: 'starter',
+    name: 'Starter Package',
+    priceUsd: 10,
+    flashAmount: 900,
+    paymentLink: "", // Placeholder - needs to be updated by the user
+  },
+  {
     id: 'pro-flash',
     priceUsd: 65,
     flashAmount: 6100,
