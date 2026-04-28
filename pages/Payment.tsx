@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShop } from '../context/ShopContext';
 import { SEO } from '../components/SEO';
@@ -7,22 +7,11 @@ import { ShieldCheck, ArrowLeft, ExternalLink, CreditCard, CheckCircle } from 'l
 export const Payment: React.FC = () => {
   const { order } = useShop();
   const navigate = useNavigate();
-  const [isRedirecting, setIsRedirecting] = useState(false);
 
   if (!order.selectedPackage) {
     navigate('/');
     return null;
   }
-
-  const handlePayment = () => {
-    setIsRedirecting(true);
-    // Redirect to the package-specific BoomFi link
-    if (order.selectedPackage?.paymentLink) {
-        setTimeout(() => {
-            window.location.href = order.selectedPackage!.paymentLink!;
-        }, 1500);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-dark pt-20 pb-24 px-4 relative overflow-hidden">
@@ -82,23 +71,24 @@ export const Payment: React.FC = () => {
                     </p>
                 </div>
 
-                <button 
-                    onClick={handlePayment}
-                    disabled={isRedirecting}
-                    className="w-full bg-gradient-to-r from-primary to-purple-600 text-white font-black py-5 rounded-xl hover:shadow-2xl hover:shadow-primary/20 hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 uppercase tracking-wide text-sm"
-                >
-                    {isRedirecting ? (
-                        <>
-                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                            Redirecting to BoomFi...
-                        </>
-                    ) : (
-                        <>
-                            <span>Pay Securely with BoomFi</span>
-                            <ExternalLink size={18} strokeWidth={3} />
-                        </>
-                    )}
-                </button>
+                {order.selectedPackage.paymentLink ? (
+                  <a 
+                      href={order.selectedPackage.paymentLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-gradient-to-r from-primary to-purple-600 text-white font-black py-5 rounded-xl hover:shadow-2xl hover:shadow-primary/20 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-3 uppercase tracking-wide text-sm text-center"
+                  >
+                      <span>Pay Securely with BoomFi</span>
+                      <ExternalLink size={18} strokeWidth={3} />
+                  </a>
+                ) : (
+                  <button 
+                      disabled
+                      className="w-full bg-gray-800 text-gray-500 font-black py-5 rounded-xl flex items-center justify-center gap-3 uppercase tracking-wide text-sm cursor-not-allowed"
+                  >
+                      <span>Payment Link Not Set</span>
+                  </button>
+                )}
                 
                 <div className="flex justify-center gap-4 mt-6 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
                     {/* Placeholder for Payment Icons if needed */}
