@@ -12,20 +12,20 @@ export const PACKAGES: Package[] = [
     name: 'Starter Package',
     priceUsd: 10,
     flashAmount: 900,
-    paymentLink: "", // Placeholder - needs to be updated by the user
+    paymentLink: "https://pay.boomfi.xyz/3BXI4RwgpLz1TQxK6fILeOfOWd8",
   },
   {
     id: 'pro-flash',
     priceUsd: 65,
     flashAmount: 6100,
     popular: true,
-    paymentLink: "", // Placeholder - needs to be updated by the user
+    paymentLink: "https://pay.boomfi.xyz/3BwboFFJJ0YeleDGsDGNKbp0qNO",
   },
   {
     id: 'enterprise',
     priceUsd: 100,
     flashAmount: 13000,
-    paymentLink: "https://pay.boomfi.xyz/3AWkmAZ4kb9vOfJSWsk3hVj8hbA",
+    paymentLink: "https://pay.boomfi.xyz/3BLvmaV93wBvOUpFpzsHuMiZqoh",
   },
   {
     id: 'whale',
