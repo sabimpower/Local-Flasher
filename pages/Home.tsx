@@ -225,15 +225,18 @@ export const Home: React.FC = () => {
       {/* Proof Section */}
       <div className="py-32 px-6 bg-[#040810] border-t border-white/5">
         <div className="max-w-7xl mx-auto text-center">
+            {/* Payment Proof Section */}
             <div className="mb-20">
               <span className="inline-block py-2 px-5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-[10px] font-black uppercase tracking-[0.4em] mb-6">
                 Verified Settlements
               </span>
-              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter">Recent Customer Proofs</h2>
+              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase lg:text-6xl">
+                Payment Proofs
+              </h2>
             </div>
             
-            <div className="flex flex-col md:flex-row justify-center gap-10 items-center">
-                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 max-w-sm w-full mx-auto shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 w-full mx-auto shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
                     <img src="https://i.postimg.cc/Bv55ML29/2026-05-15-21-23-59.jpg" alt="Payment Proof 1" className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none"></div>
                     <div className="absolute bottom-6 left-6 flex items-center gap-3">
@@ -246,7 +249,7 @@ export const Home: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 max-w-sm w-full mx-auto shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
+                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 w-full mx-auto shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
                     <img src="https://i.postimg.cc/sDyM46wW/2026-05-15-21-23-41.jpg" alt="Payment Proof 2" className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none"></div>
                     <div className="absolute bottom-6 left-6 flex items-center gap-3">
@@ -256,6 +259,69 @@ export const Home: React.FC = () => {
                         <div className="text-left">
                           <span className="block text-xs font-bold text-white uppercase tracking-widest">Verified Transfer</span>
                           <span className="block text-[10px] text-gray-400">BSC Network</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 w-full mx-auto shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
+                    <img src="https://i.postimg.cc/vTK5Hf6J/IMG-20260525-125453-282.jpg" alt="Payment Proof 3" className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center border border-secondary/30">
+                          <CheckCircle2 size={16} className="text-secondary" />
+                        </div>
+                        <div className="text-left">
+                          <span className="block text-xs font-bold text-white uppercase tracking-widest">Verified Transfer</span>
+                          <span className="block text-[10px] text-gray-400">BSC Network</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 w-full mx-auto shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
+                    <img src="https://i.postimg.cc/RVqR5VHt/IMG-20260525-125449-467.jpg" alt="Payment Proof 4" className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center border border-secondary/30">
+                          <CheckCircle2 size={16} className="text-secondary" />
+                        </div>
+                        <div className="text-left">
+                          <span className="block text-xs font-bold text-white uppercase tracking-widest">Verified Transfer</span>
+                          <span className="block text-[10px] text-gray-400">BSC Network</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Customer Review Section */}
+            <div className="mb-20 pt-12 border-t border-white/5">
+              <span className="inline-block py-2 px-5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-6">
+                Customer Testimonials
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter">Customer After Receive Review Proof</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 w-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
+                    <img src="https://i.postimg.cc/rwZz6M5m/IMG-20260527-022020.jpg" alt="Review Proof 1" className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+                          <CheckCircle2 size={16} className="text-primary" />
+                        </div>
+                        <div className="text-left">
+                          <span className="block text-xs font-bold text-white uppercase tracking-widest">Received & Confirmed</span>
+                          <span className="block text-[10px] text-gray-400">Verified Chat Proof</span>
+                        </div>
+                    </div>
+                </div>
+                <div className="relative group overflow-hidden rounded-[2.5rem] border border-white/10 w-full shadow-[0_20px_50px_-15px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_-15px_rgba(243,186,47,0.2)] transition-all duration-300">
+                    <img src="https://i.postimg.cc/8PV6wpbN/IMG-20260527-022003.jpg" alt="Review Proof 2" className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent pointer-events-none"></div>
+                    <div className="absolute bottom-6 left-6 flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
+                          <CheckCircle2 size={16} className="text-primary" />
+                        </div>
+                        <div className="text-left">
+                          <span className="block text-xs font-bold text-white uppercase tracking-widest">Received & Confirmed</span>
+                          <span className="block text-[10px] text-gray-400">Verified Chat Proof</span>
                         </div>
                     </div>
                 </div>
